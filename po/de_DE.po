@@ -1,0 +1,100 @@
+# VDR plugin language source file
+# Copyright (C)  2007 Klaus Schmidinger <kls@cadsoft.de>
+# This file is distributed under the same license as the VDR package.
+# Frank Schmirler <vdrdev@schmirler.de>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: vdr-peer 0.0.1\n"
+"Report-Msgid-Bugs-To: <see README>\n"
+"POT-Creation-Date: 2013-08-10 12:52+0200\n"
+"PO-Revision-Date: 2013-08-10 12:52+0200\n"
+"Last-Translator: Frank Schmirler <vdrdev@schmirler.de>\n"
+"Language-Team: <vdr@linuxtv.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#, c-format
+msgid "Message to '%s'"
+msgstr "Nachricht an '%s'"
+
+msgid "Send message"
+msgstr "Nachricht senden"
+
+msgid "Message sent"
+msgstr "Nachricht gesendet"
+
+msgid "Failed to send message"
+msgstr "Fehler beim Senden der Nachricht"
+
+msgid "Message"
+msgstr "Nachricht"
+
+msgid "Notify"
+msgstr "Benachrichtigung"
+
+msgid "Idle"
+msgstr "Ungenutzt"
+
+msgid "Replaying"
+msgstr "Wiedergabe"
+
+msgid "Watching"
+msgstr "Fernsehen"
+
+msgid "Recording"
+msgstr "Aufnahme"
+
+msgid "Failed to register notification"
+msgstr "Fehler beim Anmelden der Benachrichtigung"
+
+msgid "Connection to peer failed"
+msgstr "Verbindung zum Peer fehlgeschlagen"
+
+msgid "Wakeup"
+msgstr "Wecken"
+
+msgid "WoL packet sent"
+msgstr "WoL Paket gesendet"
+
+msgid "Failed to send WoL packet"
+msgstr "Fehler beim Senden des WoL Pakets"
+
+msgid "Notification scheduled"
+msgstr "Benachrichtigung eingetragen"
+
+msgid "Replay ended"
+msgstr "Wiedergabe beendet"
+
+msgid "Hide mainmenu entry"
+msgstr "Hauptmenüeintrag verstecken"
+
+msgid "Settings for callback actions"
+msgstr "Einstellungen für Rückmeldungen"
+
+msgid "Local IP"
+msgstr "Lokale IP"
+
+msgid "Local SVDRP port"
+msgstr "Lokaler SVDRP-Port"
+
+msgid "Peers"
+msgstr "Peers"
+
+#, c-format
+msgid "Peer %d IP"
+msgstr "Peer %d IP"
+
+#, c-format
+msgid "Peer %d Port"
+msgstr "Peer %d Port"
+
+#, c-format
+msgid "Peer %d Name"
+msgstr "Peer %d Name"
+
+#, c-format
+msgid "Peer %d WoL"
+msgstr "Peer %d WoL"

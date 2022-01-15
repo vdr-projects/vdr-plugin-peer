@@ -1,0 +1,135 @@
+This is a "plugin" for the Video Disk Recorder (VDR).
+
+Written by:                  Frank Schmirler <vdrdev@schmirler.de>
+
+Project's homepage:          http://vdr.schmirler.de
+
+Latest version available at: http://vdr.schmirler.de
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+See the file COPYING for more information.
+___________________________________________________________________________
+
+Contents:
+---------
+1. Description
+2. Features and Requirements
+3. Compatibility
+4. Setup options
+5. Usage
+___________________________________________________________________________
+
+1. Description:
+---------------
+With the peer plugin you can interact with multiple other VDRs. First of
+all it's a wrapper for the plugins remotetimers and remoteosd. With peer
+you are no longer limited to a single server. Just configure a list of
+VDR peers and pick one to manage its timers or access its menu. Secondly
+the plugin provides some additional features you might or might not find
+handy.
+
+2. Features and Requirements:
+-----------------------------
+Here is the current list of features and requirements. Lines starting with
+"Local:" list the requirements on the local machine, "Peer:" the requirements
+for the peer.
+  
+- Add/edit/remove timers on local and peer VDR or move timers between them
+  Local: remotetimers-plugin >= 1.0.0
+         svdrpservice-plugin
+  Peer:  SVDRP access
+
+- Access menu of peer
+  Local: remoteosd-plugin >= 1.0.0
+         svdrpservice-plugin
+  Peer:  svdrposd-plugin or svdrpext-plugin
+         SVDRP access
+
+- Send an OSD message to peer
+  Local: svdrpservice-plugin
+  Peer:  SVDRP access
+
+- Show device status of peer
+  Local: svdrpservice-plugin
+  Peer:  peer-plugin
+         SVDRP access
+
+- Get notified next time replay finishes on peer
+  Local: svdrpservice-plugin
+         SVDRP access for peer
+  Peer:  peer-plugin
+         svdrpservice-plugin
+         SVDRP access
+
+- Send a Wake-on-LAN magic packet to peer
+
+3. Compatibility:
+-----------------
+The plugin expects VDR >= 1.7.36. A Makefile for older versions is included,
+but backwards compatibility was not my first concerne. Rename Makefile-1.7.34
+to Makefile before compiling.
+
+Be aware that you need remotetimers and remoteosd >= 1.0.0 to use them with
+peer. Upon request I could provide patches for older versions.
+
+4. Setup options:
+-----------------
+- Hide mainmenu entry
+Should be obvious
+
+*** Settings for callback actions ***
+
+- Local IP
+- Local SVDRP port
+Tells the peer how to contact the local VDR. This information is passed to
+the peer along with notification requests.
+
+*** Peers ***
+List of all configured peers. Hit the "Green" button to add a new peer.
+
+- Peer # IP
+IP address of peer (required). If empty, the peer won't be shown in the menu.
+
+- Peer # Port
+SVDRP port of peer. If "0", use the default SVDRP port as configured in
+plugin svdrpservice
+
+- Peer # Name
+Friendly name, displayed in the menus (optional). If empty, the IP is shown
+instead.
+
+- Peer # WoL
+Hardware address of peers network card for Wake-on-LAN, e.g. 22:44:66:88:aa:cc
+(optional). Note that the peer-plugin sends broadcast packets to IP address
+255.255.255.255 to wake up the peer. So it is limited to peers on the local
+Ethernet. It is not limited to VDR or Linux peers - wake up any WoL capable
+device.
+
+5. Usage:
+---------
+Open the plugin main menu to get a list of all peers configured in the plugin
+setup. Check the colour buttons for available actions:
+
+- Red:    Open remotetimers' timer menu
+- Green:  Open remotetimers' schedule menu
+- Yellow: Open remoteosd
+- Blue:   Send Wake-on-LAN packet
+
+If the buttons for remotetimers or remoteosd are disabled, the plugin is not
+installed or too old.
+
+With "OK" you enter the details view of the currently selected peer. If the
+peer plugin is installed on the peer, you will get information on all of its
+devices and what they are doing at the moment. The following colour key
+actions are available:
+
+- Red:    Compose a message and show it on peer's OSD
+- Green:  Request notification when replay ends on peer.
+
+For notification the peer needs SVDRP access to the local VDR. So the callback
+address has to be configured in the plugin setup. The peer will confirm the
+notification request by callback. If you don't receive a confirmation message,
+the callback failed.
